@@ -17,22 +17,44 @@ void hal_entry(void)
 	* Call the R_IOPORT_PinCfg if the configuration was not part of initial configurations made in open */
 	err = R_IOPORT_PinCfg(&g_ioport_ctrl, BSP_IO_PORT_00_PIN_12, IOPORT_CFG_PORT_DIRECTION_OUTPUT);
 	assert(FSP_SUCCESS == err);
+	err = R_IOPORT_PinCfg(&g_ioport_ctrl, BSP_IO_PORT_00_PIN_13, IOPORT_CFG_PORT_DIRECTION_INPUT | IOPORT_CFG_PULLUP_ENABLE);
+	assert(FSP_SUCCESS == err);
+	err = R_IOPORT_PinCfg(&g_ioport_ctrl, BSP_IO_PORT_02_PIN_01, IOPORT_CFG_PORT_DIRECTION_INPUT);
+	assert(FSP_SUCCESS == err);
 
-	bsp_io_level_t level = BSP_IO_LEVEL_LOW;
+	bsp_io_level_t level_w = BSP_IO_LEVEL_LOW;
+	bsp_io_level_t level_r1;
+	bsp_io_level_t level_r2;
 	while (1) {
 		/* Determine the next state of the LEDs */
-		if (BSP_IO_LEVEL_LOW == level) {
-			level = BSP_IO_LEVEL_HIGH;
+		if (BSP_IO_LEVEL_LOW == level_w) {
+			level_w = BSP_IO_LEVEL_HIGH;
 		}
 		else {
-			level = BSP_IO_LEVEL_LOW;
+			level_w = BSP_IO_LEVEL_LOW;
 		}
-		/* Update LED on RA6M3-PK */
-		err = R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_00_PIN_12, level);
+
+		/* Update LED on RA4M1_64Pin_CoreBoard */
+		err = R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_00_PIN_12, level_w);
 		assert(FSP_SUCCESS == err);
 
-		/* Delay */
-		R_BSP_SoftwareDelay(100, BSP_DELAY_UNITS_MILLISECONDS); // NOLINT
+		/* Read SW on RA4M1_64Pin_CoreBoard */
+		err = R_IOPORT_PinRead (&g_ioport_ctrl, BSP_IO_PORT_00_PIN_13, &level_r1);
+		assert(FSP_SUCCESS == err);
+		err = R_IOPORT_PinRead (&g_ioport_ctrl, BSP_IO_PORT_02_PIN_01, &level_r2);
+		assert(FSP_SUCCESS == err);
+		if (BSP_IO_LEVEL_LOW == level_r1) {
+			/* Delay 1000ms */
+			R_BSP_SoftwareDelay(1000, BSP_DELAY_UNITS_MILLISECONDS); // NOLINT
+		}
+		else if (BSP_IO_LEVEL_LOW == level_r2) {
+			/* Delay 10ms */
+			R_BSP_SoftwareDelay(50, BSP_DELAY_UNITS_MILLISECONDS); // NOLINT
+		}
+		else {
+			/* Delay 100ms */
+			R_BSP_SoftwareDelay(100, BSP_DELAY_UNITS_MILLISECONDS); // NOLINT
+		}
 	}
 }
 

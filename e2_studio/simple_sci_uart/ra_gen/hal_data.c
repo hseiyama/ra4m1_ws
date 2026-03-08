@@ -32,7 +32,7 @@ const sci_uart_extended_cfg_t g_uart0_cfg_extend =
 
 /** UART interface configuration */
 const uart_cfg_t g_uart0_cfg =
-{ .channel = 0, .data_bits = UART_DATA_BITS_8, .parity = UART_PARITY_OFF, .stop_bits = UART_STOP_BITS_1, .p_callback =
+{ .channel = 9, .data_bits = UART_DATA_BITS_8, .parity = UART_PARITY_OFF, .stop_bits = UART_STOP_BITS_1, .p_callback =
           uart_callback,
   .p_context = NULL, .p_extend = &g_uart0_cfg_extend,
 #define RA_NOT_DEFINED (1)
@@ -49,23 +49,23 @@ const uart_cfg_t g_uart0_cfg =
 #undef RA_NOT_DEFINED
   .rxi_ipl = (12),
   .txi_ipl = (12), .tei_ipl = (12), .eri_ipl = (12),
-#if defined(VECTOR_NUMBER_SCI0_RXI)
-                .rxi_irq             = VECTOR_NUMBER_SCI0_RXI,
+#if defined(VECTOR_NUMBER_SCI9_RXI)
+                .rxi_irq             = VECTOR_NUMBER_SCI9_RXI,
 #else
   .rxi_irq = FSP_INVALID_VECTOR,
 #endif
-#if defined(VECTOR_NUMBER_SCI0_TXI)
-                .txi_irq             = VECTOR_NUMBER_SCI0_TXI,
+#if defined(VECTOR_NUMBER_SCI9_TXI)
+                .txi_irq             = VECTOR_NUMBER_SCI9_TXI,
 #else
   .txi_irq = FSP_INVALID_VECTOR,
 #endif
-#if defined(VECTOR_NUMBER_SCI0_TEI)
-                .tei_irq             = VECTOR_NUMBER_SCI0_TEI,
+#if defined(VECTOR_NUMBER_SCI9_TEI)
+                .tei_irq             = VECTOR_NUMBER_SCI9_TEI,
 #else
   .tei_irq = FSP_INVALID_VECTOR,
 #endif
-#if defined(VECTOR_NUMBER_SCI0_ERI)
-                .eri_irq             = VECTOR_NUMBER_SCI0_ERI,
+#if defined(VECTOR_NUMBER_SCI9_ERI)
+                .eri_irq             = VECTOR_NUMBER_SCI9_ERI,
 #else
   .eri_irq = FSP_INVALID_VECTOR,
 #endif

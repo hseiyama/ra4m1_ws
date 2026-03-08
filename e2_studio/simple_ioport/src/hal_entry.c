@@ -19,7 +19,7 @@ void hal_entry(void)
 	assert(FSP_SUCCESS == err);
 	err = R_IOPORT_PinCfg(&g_ioport_ctrl, BSP_IO_PORT_00_PIN_13, IOPORT_CFG_PORT_DIRECTION_INPUT | IOPORT_CFG_PULLUP_ENABLE);
 	assert(FSP_SUCCESS == err);
-	err = R_IOPORT_PinCfg(&g_ioport_ctrl, BSP_IO_PORT_02_PIN_01, IOPORT_CFG_PORT_DIRECTION_INPUT);
+	err = R_IOPORT_PinCfg(&g_ioport_ctrl, KEY_K3, IOPORT_CFG_PORT_DIRECTION_INPUT);
 	assert(FSP_SUCCESS == err);
 
 	bsp_io_level_t level_w = BSP_IO_LEVEL_LOW;
@@ -41,7 +41,7 @@ void hal_entry(void)
 		/* Read SW on RA4M1_64Pin_CoreBoard */
 		err = R_IOPORT_PinRead (&g_ioport_ctrl, BSP_IO_PORT_00_PIN_13, &level_r1);
 		assert(FSP_SUCCESS == err);
-		err = R_IOPORT_PinRead (&g_ioport_ctrl, BSP_IO_PORT_02_PIN_01, &level_r2);
+		err = R_IOPORT_PinRead (&g_ioport_ctrl, KEY_K3, &level_r2);
 		assert(FSP_SUCCESS == err);
 		if (BSP_IO_LEVEL_LOW == level_r1) {
 			/* Delay 1000ms */

@@ -10,5 +10,12 @@
         <peripheral name="PORT3.CM4" group="PORT">
             <slot name="P300.CM4" secure="false"/>
         </peripheral>
+        <peripheral name="SCI0.CM4" group="SCI" security=""/>
+        <peripheral name="ICU.CM4">
+            <slot name="IRQ0.CM4" secure="false"/>
+            <slot name="IRQ1.CM4" secure="false"/>
+            <slot name="IRQ2.CM4" secure="false"/>
+            <slot name="IRQ3.CM4" secure="false"/>
+        </peripheral>
     </partition>
 </azone>

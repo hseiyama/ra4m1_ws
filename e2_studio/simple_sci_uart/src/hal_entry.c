@@ -14,6 +14,7 @@ void uart_callback (uart_callback_args_t * p_args)
 	/* Handle the UART event */
 	switch (p_args->event) {
 	/* Received a character */
+	/* このイベントは受信バッファが満杯になった場合に発生する */
 	case UART_EVENT_RX_CHAR:
 		/* Only put the next character in the receive buffer if there is space for it */
 		if (sizeof(g_out_of_band_received) > g_out_of_band_index) {
@@ -54,20 +55,18 @@ void hal_entry(void)
 	err = R_IOPORT_PinCfg(&g_ioport_ctrl, BSP_IO_PORT_00_PIN_12, IOPORT_CFG_PORT_DIRECTION_OUTPUT);
 	assert(FSP_SUCCESS == err);
 
+	/* UART受信(4バイト分)をセッティングする */
+	err = R_SCI_UART_Read(&g_uart0_ctrl, g_dest, 4);
+	assert(FSP_SUCCESS == err);
+
 	while (1) {
-		err = R_SCI_UART_Read(&g_uart0_ctrl, g_dest, TRANSFER_LENGTH);
-		assert(FSP_SUCCESS == err);
-		err = R_SCI_UART_Write(&g_uart0_ctrl, g_src, TRANSFER_LENGTH);
+		err = R_SCI_UART_Write(&g_uart0_ctrl, (uint8_t*)".", 1);
 		assert(FSP_SUCCESS == err);
 
+		/* UART送信が完了するまで待機 */
 		while (!g_transfer_complete) {
 		}
 		g_transfer_complete = 0;
-
-//		while (!g_receive_complete) {
-//		}
-		g_receive_complete = 0;
-		g_out_of_band_index = 0;
 
 		/* Update LED on RA4M1_64Pin_CoreBoard */
 		err = R_IOPORT_PinWrite(&g_ioport_ctrl, BSP_IO_PORT_00_PIN_12, level_w);
@@ -76,6 +75,26 @@ void hal_entry(void)
 
 		/* Delay 1000ms */
 		R_BSP_SoftwareDelay(1000, BSP_DELAY_UNITS_MILLISECONDS); // NOLINT
+
+		/* UART受信が完了してる場合 */
+		if (0 != g_receive_complete) {
+			g_receive_complete = 0;
+			g_out_of_band_index = 0;
+
+			/* 次のUART受信(4バイト分)をセッティングする */
+			err = R_SCI_UART_Read(&g_uart0_ctrl, g_dest, 4);
+			assert(FSP_SUCCESS == err);
+
+			/* UART受信データをそのままUART送信する */
+			memcpy(g_src, g_dest, 4);
+			err = R_SCI_UART_Write(&g_uart0_ctrl, g_src, 4);
+			assert(FSP_SUCCESS == err);
+
+			/* UART送信が完了するまで待機 */
+			while (!g_transfer_complete) {
+			}
+			g_transfer_complete = 0;
+		}
 	}
 }
 

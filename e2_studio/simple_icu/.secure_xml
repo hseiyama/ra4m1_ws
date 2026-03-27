@@ -15,16 +15,16 @@
   </generalSettings>
   <raBspConfiguration/>
   <raClockConfiguration>
-    <node id="board.clock.xtal.freq" mul="12000000" option="_edit"/>
-    <node id="board.clock.pll.source" option="board.clock.pll.source.xtal"/>
-    <node id="board.clock.hoco.freq" option="board.clock.hoco.freq.24m"/>
+    <node id="board.clock.xtal.freq" mul="16000000" option="_edit"/>
+    <node id="board.clock.pll.source" option="board.clock.pll.source.disabled"/>
+    <node id="board.clock.hoco.freq" option="board.clock.hoco.freq.48m"/>
     <node id="board.clock.loco.freq" option="board.clock.loco.freq.32768"/>
     <node id="board.clock.moco.freq" option="board.clock.moco.freq.8m"/>
     <node id="board.clock.subclk.freq" option="board.clock.subclk.freq.32768"/>
     <node id="board.clock.pll.div" option="board.clock.pll.div.2"/>
     <node id="board.clock.pll.mul" option="board.clock.pll.mul.8"/>
     <node id="board.clock.pll.display" option="board.clock.pll.display.value"/>
-    <node id="board.clock.clock.source" option="board.clock.clock.source.pll"/>
+    <node id="board.clock.clock.source" option="board.clock.clock.source.hoco"/>
     <node id="board.clock.iclk.div" option="board.clock.iclk.div.1"/>
     <node id="board.clock.iclk.display" option="board.clock.iclk.display.value"/>
     <node id="board.clock.pclka.div" option="board.clock.pclka.div.1"/>
@@ -40,18 +40,20 @@
     <node id="board.clock.clkout.source" option="board.clock.clkout.source.disabled"/>
     <node id="board.clock.clkout.div" option="board.clock.clkout.div.1"/>
     <node id="board.clock.clkout.display" option="board.clock.clkout.display.value"/>
-    <node id="board.clock.uclk.source" option="board.clock.uclk.source.pll"/>
+    <node id="board.clock.uclk.source" option="board.clock.uclk.source.hoco"/>
     <node id="board.clock.uclk.display" option="board.clock.clkout.display.value"/>
   </raClockConfiguration>
   <raPinConfiguration>
     <pincfg active="true" name="" symbol="">
-      <configSetting altId="debug0.tck.p300" configurationId="debug0.tck" peripheral="DEBUG0"/>
-      <configSetting altId="debug0.tdi.p110" configurationId="debug0.tdi" peripheral="DEBUG0"/>
-      <configSetting altId="debug0.tdo.p109" configurationId="debug0.tdo" peripheral="DEBUG0"/>
-      <configSetting altId="debug0.tms.p108" configurationId="debug0.tms" peripheral="DEBUG0"/>
+      <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk" isUsedByDriver="true" peripheral="DEBUG0"/>
+      <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio" isUsedByDriver="true" peripheral="DEBUG0"/>
+      <configSetting altId="irq0.irq00.p105" configurationId="irq0.irq00" isUsedByDriver="true" peripheral="IRQ0"/>
+      <configSetting altId="p012.output.low" configurationId="p012"/>
+      <configSetting altId="p012.gpio_mode.gpio_mode_out.low" configurationId="p012.gpio_mode"/>
+      <configSetting altId="p105.gpio_irq.gpio_irq_enabled" configurationId="p105.gpio_irq"/>
+      <configSetting altId="p105.gpio_mode.gpio_mode_irq" configurationId="p105.gpio_mode"/>
+      <configSetting altId="p105.gpio_pupd.gpio_pupd_ip_up" configurationId="p105.gpio_pupd"/>
       <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
-      <configSetting altId="p109.gpio_mode.gpio_mode_peripheral" configurationId="p109.gpio_mode"/>
-      <configSetting altId="p110.gpio_mode.gpio_mode_peripheral" configurationId="p110.gpio_mode"/>
       <configSetting altId="p300.gpio_mode.gpio_mode_peripheral" configurationId="p300.gpio_mode"/>
     </pincfg>
   </raPinConfiguration>

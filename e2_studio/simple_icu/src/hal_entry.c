@@ -3,7 +3,7 @@
 volatile uint8_t g_external_irq_complete = 0;
 
 /* Called from icu_irq_isr */
-void PORT_IRQ0_Handler(external_irq_callback_args_t * p_args)
+void irq_callback (external_irq_callback_args_t * p_args)
 {
     (void) p_args;
     g_external_irq_complete = 1;

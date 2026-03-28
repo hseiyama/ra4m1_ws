@@ -195,6 +195,6 @@ FSP Configuration
       Digital Filtering: Disabled
       Filter Source: PCLK filter
       Digital Filtering Sample Clock (Only valid when Digital Filtering is Enabled): PCLK / 64
-      Callback: PORT_IRQ0_Handler
+      Callback: irq_callback
       Pin Interrupt Priority: Priority 12
       

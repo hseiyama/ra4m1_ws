@@ -9,7 +9,7 @@
 #define VECTOR_DATA_IRQ_COUNT    (1)
 #endif
 /* ISR prototypes */
-void r_icu_isr(void);
+void PORT_IRQ0_Handler(void);
 
 /* Vector table allocations */
 #define VECTOR_NUMBER_ICU_IRQ0 ((IRQn_Type) 0) /* ICU IRQ0 (External pin interrupt 0) */

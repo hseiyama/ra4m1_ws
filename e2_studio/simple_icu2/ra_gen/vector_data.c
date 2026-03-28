@@ -4,7 +4,7 @@
 #if VECTOR_DATA_IRQ_COUNT > 0
         BSP_DONT_REMOVE const fsp_vector_t g_vector_table[BSP_ICU_VECTOR_NUM_ENTRIES] BSP_PLACE_IN_SECTION(BSP_SECTION_APPLICATION_VECTORS) =
         {
-                        [0] = r_icu_isr, /* ICU IRQ0 (External pin interrupt 0) */
+                        [0] = PORT_IRQ0_Handler, /* ICU IRQ0 (External pin interrupt 0) */
         };
         #if BSP_FEATURE_ICU_HAS_IELSR
         const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_NUM_ENTRIES] =

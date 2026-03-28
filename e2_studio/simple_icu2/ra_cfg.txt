@@ -164,6 +164,7 @@ FSP Configuration
       VSSUSB 17 USBFS0_VSSUSB - - - - - - - - IO "Read only" - 
     
   User Events
+    ICU IRQ0 (External pin interrupt 0): PORT_IRQ0_Handler
     
   User Event Links
     
@@ -176,9 +177,6 @@ FSP Configuration
     Parameter Checking: Default (BSP)
     CCD Support: Not Supported
     
-  Module "External IRQ (r_icu)"
-    Parameter Checking: Default (BSP)
-    
   HAL
     Instance "g_ioport I/O Port (r_ioport)"
       Name: g_ioport
@@ -187,14 +185,4 @@ FSP Configuration
       3rd Port ELC Trigger Source: Disabled
       4th Port ELC Trigger Source: Disabled
       Pin Configuration Name: g_bsp_pin_cfg
-      
-    Instance "g_external_irq0 External IRQ (r_icu)"
-      Name: g_external_irq0
-      Channel: 0
-      Trigger: Falling
-      Digital Filtering: Disabled
-      Filter Source: PCLK filter
-      Digital Filtering Sample Clock (Only valid when Digital Filtering is Enabled): PCLK / 64
-      Callback: irq_callback
-      Pin Interrupt Priority: Priority 12
       

@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/CPATH/delimiter=;
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/CPATH/operation=remove
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/append=true
+environment/buildEnvironmentInclude/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/appendContributed=true
+environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/append=true
+environment/buildEnvironmentLibrary/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.107256161/appendContributed=true

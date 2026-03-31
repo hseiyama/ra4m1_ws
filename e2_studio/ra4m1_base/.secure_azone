@@ -2,6 +2,9 @@
 <azone>
     <rzone name="R7FA4M1AB3CFM.rzone"/>
     <partition>
+        <peripheral name="PORT0.CM4" group="PORT">
+            <slot name="P012.CM4" secure="false"/>
+        </peripheral>
         <peripheral name="PORT1.CM4" group="PORT">
             <slot name="P105.CM4" secure="false"/>
             <slot name="P108.CM4" secure="false"/>

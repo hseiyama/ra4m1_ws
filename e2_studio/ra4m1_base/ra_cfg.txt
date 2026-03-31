@@ -107,7 +107,7 @@ FSP Configuration
       P004 60 - - - - Disabled - - "ADC0: AN04; IRQ0: IRQ03; OPAMP2: AMPO" - なし - - 
       P010 59 - - - - Disabled - - "ADC: VREFH0; ADC0: AN05; CTSU0: TS30; OPAMP2: AMP-" - なし - - 
       P011 58 - - - - Disabled - - "ADC: VREFL0; ADC0: AN06; CTSU0: TS31; IRQ0: IRQ15; OPAMP2: AMP+" - なし - - 
-      P012 55 - - - - Disabled - - "ADC: VREFH; ADC0: AN07; OPAMP1: AMP-" - なし - - 
+      P012 55 GPIO - Low - "Output mode (Initial Low)" - None "ADC: VREFH; ADC0: AN07; OPAMP1: AMP-" - IO - - 
       P013 54 - - - - Disabled - - "ADC: VREFL; ADC0: AN08; OPAMP1: AMP+" - なし - - 
       P014 53 - - - - Disabled - - "ADC0: AN09; DAC120: DA" - なし - - 
       P015 52 - - - - Disabled - - "ADC0: AN10; CTSU0: TS28; IRQ0: IRQ07" - なし - - 
@@ -116,7 +116,7 @@ FSP Configuration
       P102 46 - - - - Disabled - - "ADC0: ADTRG; ADC0: AN20; AGT0: AGTO; CAN0: CRX; CMP0: CMPIN1; GPT2: GTIOCB; KINT0: KRM2; OPS0: GTOWLO; SCI0: SCK; SCI2: SDA; SCI2: TXD_MOSI; SLCDC0: VL3; SPI0: RSPCK" - なし - - 
       P103 45 - - - - Disabled - - "ADC0: AN19; CAN0: CTX; CMP0: CMPREF1; GPT2: GTIOCA; KINT0: KRM3; OPS0: GTOWUP; SCI0: CTS_RTS_SS; SLCDC0: VL4; SPI0: SSL0" - なし - - 
       P104 44 - - - - Disabled - - "CTSU0: TS13; GPT1: GTIOCB; IRQ0: IRQ01; KINT0: KRM4; POEG1: GTETRG; SCI0: RXD_MISO; SCI0: SCL; SLCDC0: COM0; SPI0: SSL1" - なし - - 
-      P105 43 IRQ0_IRQ00 - - IRQ0 "IRQ mode" - None "CTSU0: TS34; GPT1: GTIOCA; IRQ0: IRQ00; KINT0: KRM5; POEG0: GTETRG; SLCDC0: COM1; SPI0: SSL2" - IO - - 
+      P105 43 IRQ0_IRQ00 - - IRQ0 "IRQ mode" - "input pull-up" "CTSU0: TS34; GPT1: GTIOCA; IRQ0: IRQ00; KINT0: KRM5; POEG0: GTETRG; SLCDC0: COM1; SPI0: SSL2" - IO - - 
       P106 42 - - - - Disabled - - "GPT0: GTIOCB; KINT0: KRM6; SLCDC0: COM2; SPI0: SSL3" - なし - - 
       P107 41 - - - - Disabled - - "GPT0: GTIOCA; KINT0: KRM7; SLCDC0: COM3" - なし - - 
       P108 33 DEBUG0_SWDIO - Low - "Peripheral mode" CMOS None "DEBUG0: SWDIO; DEBUG0: TMS; GPT0: GTIOCB; OPS0: GTOULO; SCI9: CTS_RTS_SS; SPI1: SSL0" - IO - - 

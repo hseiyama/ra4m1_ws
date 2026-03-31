@@ -234,9 +234,12 @@
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio"/>
       <configSetting altId="irq0.irq00.p105" configurationId="irq0.irq00"/>
       <configSetting altId="irq0.mode.enabled" configurationId="irq0.mode"/>
+      <configSetting altId="p012.output.low" configurationId="p012"/>
+      <configSetting altId="p012.gpio_mode.gpio_mode_out.low" configurationId="p012.gpio_mode"/>
       <configSetting altId="p105.irq0.irq00" configurationId="p105"/>
       <configSetting altId="p105.gpio_irq.gpio_irq_enabled" configurationId="p105.gpio_irq"/>
       <configSetting altId="p105.gpio_mode.gpio_mode_irq" configurationId="p105.gpio_mode"/>
+      <configSetting altId="p105.gpio_pupd.gpio_pupd_ip_up" configurationId="p105.gpio_pupd"/>
       <configSetting altId="p108.debug0.swdio" configurationId="p108"/>
       <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
       <configSetting altId="p109.sci9.txd" configurationId="p109"/>

@@ -36,9 +36,9 @@ extern "C" {
 #define SYS_CYCLE_TIME		(5)		/* システムの周期時間[ms]		*/
 
 /* IRQ番号の割り当て */
-#define IRQ_SCI9_RXI		(1)		/* SCI9受信データフル割り込み			*/
-#define IRQ_SCI9_TXI		(2)		/* SCI9送信データエンプティ割り込み		*/
-#define IRQ_SCI9_ERI		(3)		/* SCI9受信エラー割り込み				*/
+#define IRQ_SCI9_RXI		(6)		/* SCI9受信データフル割り込み			*/
+#define IRQ_SCI9_TXI		(7)		/* SCI9送信データエンプティ割り込み		*/
+#define IRQ_SCI9_ERI		(8)		/* SCI9受信エラー割り込み				*/
 
 /* Exported macro ------------------------------------------------------------*/
 

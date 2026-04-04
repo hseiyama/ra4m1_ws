@@ -35,7 +35,7 @@ static void port_irq_init(void);					/* PORT_IRQ 初期化処理					*/
 
 /**
   * @brief  外部端子割り込みコールバック
-  * @param  None
+  * @param  p_args: コールバック引数
   * @retval None
   */
 void ICU_IRQ_Callback(external_irq_callback_args_t * p_args)

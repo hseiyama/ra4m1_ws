@@ -28,21 +28,47 @@ static Timer sts_Timer1s;							/* 1秒タイマー				*/
 static uint8_t u8s_RcvData[UART_BUFF_SIZE];			/* UART受信データ			*/
 static uint16_t u16s_RcvDataSize;					/* UART受信データサイズ		*/
 
+static volatile bool g_rx_flag  = false;
+static volatile bool g_tx_flag  = false;
+static volatile bool g_err_flag = false;
+static volatile uint32_t g_rx_id;
+static can_frame_t g_can_tx_frame;
+static can_frame_t g_can_rx_frame;
+
 /* Private function prototypes -----------------------------------------------*/
-static void port_irq_init(void);					/* PORT_IRQ 初期化処理					*/
+static void can_init(void);							/* CAN 初期化処理						*/
+static void can_send(void);							/* CAN 送信処理							*/
 
 /* Exported functions --------------------------------------------------------*/
 
 /**
-  * @brief  外部端子割り込みコールバック
-  * @param  None
+  * @brief  CAN割り込みコールバック
+  * @param  p_args: コールバック引数
   * @retval None
   */
-void ICU_IRQ_Callback(external_irq_callback_args_t * p_args)
+void CAN_Callback(can_callback_args_t * p_args)
 {
-	(void)p_args;
-	/* 文字を出力する */
-	uartEchoStr("Irq0");
+	switch (p_args->event) {
+	case CAN_EVENT_RX_COMPLETE:				/* Receive complete event. */
+		g_rx_flag = true;
+		g_rx_id = p_args->frame.id;
+		/* Read received frame */
+		g_can_rx_frame = p_args->frame;
+		break;
+	case CAN_EVENT_TX_COMPLETE:				/* Transmit complete event. */
+		g_tx_flag = true;
+		break;
+	case CAN_EVENT_ERR_BUS_OFF:				/* Bus error event. (bus off) */
+	case CAN_EVENT_ERR_PASSIVE:				/* Bus error event. (error passive) */
+	case CAN_EVENT_ERR_WARNING:				/* Bus error event. (error warning) */
+	case CAN_EVENT_BUS_RECOVERY:			/* Bus error event. (bus recovery) */
+	case CAN_EVENT_MAILBOX_MESSAGE_LOST:	/* Overwrite/overrun error */
+		/* Set error flag */
+		g_err_flag = true;
+		break;
+	default:
+		break;
+	}
 }
 
 /**
@@ -55,15 +81,15 @@ void setup(void)
 	mem_set08(&u8s_RcvData[0], 0x00, UART_BUFF_SIZE);
 	u16s_RcvDataSize = 0;
 
-	/* PORT_IRQ 初期化処理 */
-	port_irq_init();
+	/* CAN 初期化処理 */
+	can_init();
 
 	/* タイマーを開始する */
 	startTimer(&sts_Timer1s);
 
 	/* プログラム開始メッセージを表示する */
 	uartEchoStrln("");
-	uartEchoStrln("Start UART/GPIO sample!!");
+	uartEchoStrln("Start CAN sample!!");
 }
 
 /**
@@ -112,6 +138,8 @@ void loop(void)
 
 	/* 1秒判定時間が満了した場合 */
 	if (checkTimer(&sts_Timer1s, TIME_1S)) {
+		/* CAN 送信処理 */
+		can_send();
 		/* ユーザーLEDを反転出力する */
 		R_PORT0->PODR_b.PODR12 = !R_PORT0->PODR_b.PODR12;
 		/* 文字を出力する */
@@ -141,16 +169,38 @@ void Error_Handler(void)
 /* Private functions ---------------------------------------------------------*/
 
 /**
-  * @brief  PORT_IRQ 初期化処理
+  * @brief  CAN 初期化処理
   * @param  None
   * @retval None
   */
-static void port_irq_init(void)
+static void can_init(void)
 {
-	/* Configure the external interrupt. */
-	R_ICU_ExternalIrqOpen(&g_external_irq0_ctrl, &g_external_irq0_cfg);
+	/* Initialize the CAN module */
+	R_CAN_Open(&g_can0_ctrl, &g_can0_cfg);
+}
 
-	/* Enable the external interrupt. */
-	R_ICU_ExternalIrqEnable(&g_external_irq0_ctrl);
+/**
+  * @brief  CAN 送信処理
+  * @param  None
+  * @retval None
+  */
+static void can_send(void)
+{
+    g_can_tx_frame.id = 0x123;
+    g_can_tx_frame.type = CAN_FRAME_TYPE_DATA;
+    g_can_tx_frame.data_length_code = 8;
+    /* Write some data to the transmit frame */
+	g_can_tx_frame.data[0] = 0x12;
+	g_can_tx_frame.data[1] = 0x34;
+	g_can_tx_frame.data[2] = 0x56;
+	g_can_tx_frame.data[3] = 0x78;
+	g_can_tx_frame.data[4] = 0x9A;
+	g_can_tx_frame.data[5] = 0xBC;
+	g_can_tx_frame.data[6] = 0xDE;
+	g_can_tx_frame.data[7] = 0xF0;
+    /* Send data on the bus */
+    g_tx_flag  = false;
+    g_err_flag = false;
+    R_CAN_Write(&g_can0_ctrl, CAN_MAILBOX_ID_0, &g_can_tx_frame);
 }
 

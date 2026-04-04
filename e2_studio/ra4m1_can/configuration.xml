@@ -184,10 +184,6 @@
       <description>Custom Board Support Files</description>
       <originalPack>Renesas.RA_board_custom.6.3.1.pack</originalPack>
     </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_icu" variant="" vendor="Renesas" version="6.3.1">
-      <description>External Interrupt</description>
-      <originalPack>Renesas.RA.6.3.1.pack</originalPack>
-    </component>
     <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_can" variant="" vendor="Renesas" version="6.3.1">
       <description>Controller Area Network</description>
       <originalPack>Renesas.RA.6.3.1.pack</originalPack>
@@ -208,16 +204,6 @@
       <property id="module.driver.ioport.elc_trigger_ioport3" value="_disabled"/>
       <property id="module.driver.ioport.elc_trigger_ioport4" value="_disabled"/>
       <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
-    </module>
-    <module id="module.driver.external_irq_on_icu.1922816743">
-      <property id="module.driver.external_irq.name" value="g_external_irq0"/>
-      <property id="module.driver.external_irq.channel" value="0"/>
-      <property id="module.driver.external_irq.trigger" value="module.driver.external_irq.trigger.trig_falling"/>
-      <property id="module.driver.external_irq.filter_enable" value="module.driver.external_irq.filter_enable.true"/>
-      <property id="module.driver.external_irq.filter_source" value="module.driver.external_irq.filter_source.pclk"/>
-      <property id="module.driver.external_irq.clock_source_div" value="module.driver.external_irq.clock_source_div.clock_source_div_by_64"/>
-      <property id="module.driver.external_irq.p_callback" value="ICU_IRQ_Callback"/>
-      <property id="module.driver.external_irq.ipl" value="board.icu.common.irq.priority12"/>
     </module>
     <module id="module.driver.can_on_can.1208809228">
       <property id="module.driver.can.name" value="g_can0"/>
@@ -383,7 +369,6 @@
     </module>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.0"/>
-      <stack module="module.driver.external_irq_on_icu.1922816743"/>
       <stack module="module.driver.can_on_can.1208809228"/>
     </context>
     <config id="config.driver.ioport">
@@ -393,9 +378,6 @@
     <config id="config.driver.can">
       <property id="config.driver.can.param_checking_enable" value="config.driver.can.param_checking_enable.bsp"/>
       <property id="config.driver.can.fifo_support" value="config.driver.can.fifo_support.disabled"/>
-    </config>
-    <config id="config.driver.icu">
-      <property id="config.driver.icu.param_checking_enable" value="config.driver.icu.param_checking_enable.bsp"/>
     </config>
   </raModuleConfiguration>
   <raPinConfiguration>
@@ -407,18 +389,12 @@
       <configSetting altId="debug0.mode.swd" configurationId="debug0.mode"/>
       <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk"/>
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio"/>
-      <configSetting altId="irq0.irq00.p105" configurationId="irq0.irq00"/>
-      <configSetting altId="irq0.mode.enabled" configurationId="irq0.mode"/>
       <configSetting altId="p012.output.low" configurationId="p012"/>
       <configSetting altId="p012.gpio_mode.gpio_mode_out.low" configurationId="p012.gpio_mode"/>
       <configSetting altId="p102.can0.crx" configurationId="p102"/>
       <configSetting altId="p102.gpio_mode.gpio_mode_peripheral" configurationId="p102.gpio_mode"/>
       <configSetting altId="p103.can0.ctx" configurationId="p103"/>
       <configSetting altId="p103.gpio_mode.gpio_mode_peripheral" configurationId="p103.gpio_mode"/>
-      <configSetting altId="p105.irq0.irq00" configurationId="p105"/>
-      <configSetting altId="p105.gpio_irq.gpio_irq_enabled" configurationId="p105.gpio_irq"/>
-      <configSetting altId="p105.gpio_mode.gpio_mode_irq" configurationId="p105.gpio_mode"/>
-      <configSetting altId="p105.gpio_pupd.gpio_pupd_ip_up" configurationId="p105.gpio_pupd"/>
       <configSetting altId="p108.debug0.swdio" configurationId="p108"/>
       <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
       <configSetting altId="p109.sci9.txd" configurationId="p109"/>
@@ -435,7 +411,6 @@
       <lockSetting id="can0.ctx" lock="true"/>
       <lockSetting id="debug0.swclk" lock="true"/>
       <lockSetting id="debug0.swdio" lock="true"/>
-      <lockSetting id="irq0.irq00" lock="true"/>
       <lockSetting id="sci9.rxd" lock="true"/>
       <lockSetting id="sci9.txd" lock="true"/>
     </pincfg>

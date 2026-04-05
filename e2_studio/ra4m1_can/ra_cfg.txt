@@ -195,7 +195,7 @@ FSP Configuration
     Instance "g_can0 CAN (r_can)"
       General: Name: g_can0
       General: Channel: 0
-      General: Clock Source: Main oscillator (CANMCLK)
+      General: Clock Source: PCLKB
       Baud Rate Settings: Auto-generated Settings: Sample-Point (%): 75
       Baud Rate Settings: Auto-generated Settings: CAN Baud Rate (Hz): 500000
       Baud Rate Settings: Override Auto-generated Settings: Override Baud Settings: Disabled
@@ -211,8 +211,8 @@ FSP Configuration
       Input: Receive FIFO: Receive ID 2: ID: 0
       Input: Mailbox 0-3 Group: Mailbox ID: Mailbox 0 ID: 0
       Input: Mailbox 0-3 Group: Mailbox ID: Mailbox 1 ID: 1
-      Input: Mailbox 0-3 Group: Mailbox ID: Mailbox 2 ID: 2
-      Input: Mailbox 0-3 Group: Mailbox ID: Mailbox 3 ID: 3
+      Input: Mailbox 0-3 Group: Mailbox ID: Mailbox 2 ID: 0x456
+      Input: Mailbox 0-3 Group: Mailbox ID: Mailbox 3 ID: 0x789
       Input: Mailbox 4-7 Group: Mailbox ID: Mailbox 4 ID: 4
       Input: Mailbox 4-7 Group: Mailbox ID: Mailbox 5 ID: 5
       Input: Mailbox 4-7 Group: Mailbox ID: Mailbox 6 ID: 6
@@ -276,7 +276,7 @@ FSP Configuration
       Input: Mailbox 28-31 Group: Mailbox ID Mode: Mailbox 30 ID Mode: Standard ID
       Input: Mailbox 28-31 Group: Mailbox ID Mode: Mailbox 31 ID Mode: Standard ID
       Input: Mailbox 0-3 Group: Mailbox Type: Mailbox 0 Type: Transmit Mailbox
-      Input: Mailbox 0-3 Group: Mailbox Type: Mailbox 1 Type: Receive Mailbox
+      Input: Mailbox 0-3 Group: Mailbox Type: Mailbox 1 Type: Transmit Mailbox
       Input: Mailbox 0-3 Group: Mailbox Type: Mailbox 2 Type: Receive Mailbox
       Input: Mailbox 0-3 Group: Mailbox Type: Mailbox 3 Type: Receive Mailbox
       Input: Mailbox 4-7 Group: Mailbox Type: Mailbox 4 Type: Receive Mailbox
@@ -309,7 +309,7 @@ FSP Configuration
       Input: Mailbox 28-31 Group: Mailbox Type: Mailbox 31 Type: Receive Mailbox
       Input: Receive FIFO: Receive ID 1: Frame Type: Remote Mailbox
       Input: Receive FIFO: Receive ID 2: Frame Type: Remote Mailbox
-      Input: Mailbox 0-3 Group: Mailbox Frame Type: Mailbox 0 Frame Type: Remote Mailbox
+      Input: Mailbox 0-3 Group: Mailbox Frame Type: Mailbox 0 Frame Type: Data Mailbox
       Input: Mailbox 0-3 Group: Mailbox Frame Type: Mailbox 1 Frame Type: Data Mailbox
       Input: Mailbox 0-3 Group: Mailbox Frame Type: Mailbox 2 Frame Type: Data Mailbox
       Input: Mailbox 0-3 Group: Mailbox Frame Type: Mailbox 3 Frame Type: Data Mailbox
@@ -351,6 +351,6 @@ FSP Configuration
       Input: Mailbox 20-23 Group: Mailbox 20-23 Group Mask: 0x1FFFFFFF
       Input: Mailbox 24-27 Group: Mailbox 24-27 Group Mask: 0x1FFFFFFF
       Input: Mailbox 28-31 Group: Mailbox 28-31 Group Mask: 0x1FFFFFFF
-      Interrupts: Interrupt Priority Level: Priority 12
+      Interrupts: Interrupt Priority Level: Priority 2
       Interrupts: Transmit FIFO Interrupt Mode: Every Message
       

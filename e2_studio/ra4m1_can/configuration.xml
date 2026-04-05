@@ -208,7 +208,7 @@
     <module id="module.driver.can_on_can.1208809228">
       <property id="module.driver.can.name" value="g_can0"/>
       <property id="module.driver.can.channel" value="0"/>
-      <property id="module.driver.can.clock_source" value="module.driver.can.clock_source.canmclk"/>
+      <property id="module.driver.can.clock_source" value="module.driver.can.clock_source.pclkb"/>
       <property id="module.driver.can.sample_point" value="75"/>
       <property id="module.driver.can.baud_rate" value="500000"/>
       <property id="module.driver.can.override_baud_setting" value="module.driver.can.override_baud_setting.disabled"/>
@@ -224,8 +224,8 @@
       <property id="module.driver.can.rxfifo_id2.id" value="0"/>
       <property id="module.driver.can.mailbox0_id" value="0"/>
       <property id="module.driver.can.mailbox1_id" value="1"/>
-      <property id="module.driver.can.mailbox2_id" value="2"/>
-      <property id="module.driver.can.mailbox3_id" value="3"/>
+      <property id="module.driver.can.mailbox2_id" value="0x456"/>
+      <property id="module.driver.can.mailbox3_id" value="0x789"/>
       <property id="module.driver.can.mailbox4_id" value="4"/>
       <property id="module.driver.can.mailbox5_id" value="5"/>
       <property id="module.driver.can.mailbox6_id" value="6"/>
@@ -289,7 +289,7 @@
       <property id="module.driver.can.mailbox30_id_mode" value="module.driver.can.mailbox30_id_mode.standard"/>
       <property id="module.driver.can.mailbox31_id_mode" value="module.driver.can.mailbox31_id_mode.standard"/>
       <property id="module.driver.can.mailbox0_type" value="module.driver.can.mailbox0_type.transmit"/>
-      <property id="module.driver.can.mailbox1_type" value="module.driver.can.mailbox1_type.receive"/>
+      <property id="module.driver.can.mailbox1_type" value="module.driver.can.mailbox1_type.transmit"/>
       <property id="module.driver.can.mailbox2_type" value="module.driver.can.mailbox2_type.receive"/>
       <property id="module.driver.can.mailbox3_type" value="module.driver.can.mailbox3_type.receive"/>
       <property id="module.driver.can.mailbox4_type" value="module.driver.can.mailbox4_type.receive"/>
@@ -322,7 +322,7 @@
       <property id="module.driver.can.mailbox31_type" value="module.driver.can.mailbox31_type.receive"/>
       <property id="module.driver.can.rxfifo_id1.frame_type" value="module.driver.can.rxfifo_id1.frame_type.remote"/>
       <property id="module.driver.can.rxfifo_id2.frame_type" value="module.driver.can.rxfifo_id2.frame_type.remote"/>
-      <property id="module.driver.can.mailbox0_frame_type" value="module.driver.can.mailbox0_frame_type.remote"/>
+      <property id="module.driver.can.mailbox0_frame_type" value="module.driver.can.mailbox0_frame_type.data"/>
       <property id="module.driver.can.mailbox1_frame_type" value="module.driver.can.mailbox1_frame_type.data"/>
       <property id="module.driver.can.mailbox2_frame_type" value="module.driver.can.mailbox2_frame_type.data"/>
       <property id="module.driver.can.mailbox3_frame_type" value="module.driver.can.mailbox3_frame_type.data"/>
@@ -364,7 +364,7 @@
       <property id="module.driver.can.mailbox_20_to_23_group_mask" value="0x1FFFFFFF"/>
       <property id="module.driver.can.mailbox_24_to_27_group_mask" value="0x1FFFFFFF"/>
       <property id="module.driver.can.mailbox_28_to_31_group_mask" value="0x1FFFFFFF"/>
-      <property id="module.driver.can.ipl" value="board.icu.common.irq.priority12"/>
+      <property id="module.driver.can.ipl" value="board.icu.common.irq.priority2"/>
       <property id="module.driver.can.txfifo_int_mode" value="module.driver.can.txfifo_int_mode.every_frame"/>
     </module>
     <context id="_hal.0">

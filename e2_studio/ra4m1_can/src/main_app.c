@@ -190,14 +190,14 @@ static void can_send(void)
     g_can_tx_frame.type = CAN_FRAME_TYPE_DATA;
     g_can_tx_frame.data_length_code = 8;
     /* Write some data to the transmit frame */
-	g_can_tx_frame.data[0] = 0x12;
-	g_can_tx_frame.data[1] = 0x34;
-	g_can_tx_frame.data[2] = 0x56;
-	g_can_tx_frame.data[3] = 0x78;
-	g_can_tx_frame.data[4] = 0x9A;
-	g_can_tx_frame.data[5] = 0xBC;
-	g_can_tx_frame.data[6] = 0xDE;
-	g_can_tx_frame.data[7] = 0xF0;
+	g_can_tx_frame.data[0] = 0x11;
+	g_can_tx_frame.data[1] = 0x12;
+	g_can_tx_frame.data[2] = 0x13;
+	g_can_tx_frame.data[3] = 0x14;
+	g_can_tx_frame.data[4] = 0x15;
+	g_can_tx_frame.data[5] = 0x16;
+	g_can_tx_frame.data[6] = 0x17;
+	g_can_tx_frame.data[7] = 0x18;
     /* Send data on the bus */
     g_tx_flag  = false;
     g_err_flag = false;
